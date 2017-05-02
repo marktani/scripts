@@ -1,0 +1,5 @@
+type Entry {
+  id: ID! @isUnique
+  json: Json
+  jsonList: [Json!]
+}
