@@ -4,7 +4,8 @@ const {Lokka} = require('lokka')
 const {Transport} = require('lokka-transport-http')
 
 const headers = {
-  'Authorization': 'Bearer __PERMANENT_AUTH_TOKEN__'
+  // if needed, inject a PAT
+  // 'Authorization': 'Bearer __PERMANENT_AUTH_TOKEN__'
 }
 
 const client = new Lokka({
@@ -59,7 +60,7 @@ const deleteBatch = async () => {
 const main = async() => {
   // set to true to create test data
   if (false) {
-    console.log(`Creating some posts...`)
+    console.log('Creating some posts...')
     await createPosts()
   } else {
     // query total posts:
