@@ -1,0 +1,7 @@
+type Post implements Node {
+  id: ID! @isUnique
+  title: String!
+  dummy: String! @defaultValue(value: "dummy")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
