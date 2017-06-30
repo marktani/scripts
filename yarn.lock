@@ -23,6 +23,12 @@ encoding@^0.1.11:
   dependencies:
     iconv-lite "~0.4.13"
 
+graphql-request@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-1.2.0.tgz#9be0945b2399342f1d495be96939b2421b0823a2"
+  dependencies:
+    isomorphic-fetch "^2.2.1"
+
 iconv-lite@~0.4.13:
   version "0.4.15"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.15.tgz#fe265a218ac6a57cfe854927e9d04c19825eddeb"
@@ -30,6 +36,13 @@ iconv-lite@~0.4.13:
 is-stream@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
+
+isomorphic-fetch@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
+  dependencies:
+    node-fetch "^1.0.1"
+    whatwg-fetch ">=0.10.0"
 
 lodash@^4.17.2:
   version "4.17.4"
@@ -50,7 +63,7 @@ lokka@^1.7.0:
     babel-runtime "6.x.x"
     uuid "2.x.x"
 
-node-fetch@^1.5.2:
+node-fetch@^1.0.1, node-fetch@^1.5.2:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
   dependencies:
@@ -65,6 +78,6 @@ uuid@2.x.x:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
-whatwg-fetch@^1.0.0:
+whatwg-fetch@>=0.10.0, whatwg-fetch@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-1.1.1.tgz#ac3c9d39f320c6dce5339969d054ef43dd333319"
