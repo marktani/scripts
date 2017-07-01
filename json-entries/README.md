@@ -1,6 +1,6 @@
 # json-entries
 
-Shows the usages of Lokka to run a GraphQL mutation with JSON and JSON list variables
+Shows the usages of [graphql-request](https://github.com/graphcool/graphql-request) to run a GraphQL mutation with JSON and JSON list variables
 
 ### 1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
