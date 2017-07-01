@@ -12,7 +12,7 @@ npm install -g graphcool
 graphcool init --schema json-entries.graphql
 ```
 
-Replace the `__PROJECT_ID__`.
+Replace the `__PROJECT_ID__` in `json-entries.js` with your endpoint.
 
 ### 2. Install dependencies
 
