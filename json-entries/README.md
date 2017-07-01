@@ -9,7 +9,7 @@ Shows the usages of Lokka to run a GraphQL mutation with JSON and JSON list vari
 npm install -g graphcool
 
 # Create a new project with example schema
-graphcool init --file json-entries.graphql
+graphcool init --schema json-entries.graphql
 ```
 
 Replace the `__PROJECT_ID__`.
@@ -20,7 +20,7 @@ Replace the `__PROJECT_ID__`.
 yarn
 ```
 
-Make sure your node version is at least 7:
+Make sure your node version is at least 7.6:
 
 ```sh
 node -v
@@ -31,5 +31,5 @@ node -v
 Run the script to create some Json data:
 
 ```sh
-node --harmony-async-await json-entries.js
+node json-entries.js
 ```
