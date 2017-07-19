@@ -1,80 +1,47 @@
-const Bluebird = require('bluebird')
-const _ = require('lodash')
-const {Lokka} = require('lokka')
-const {Transport} = require('lokka-transport-http')
+require('dotenv').config();
+const { GraphQLClient } = require('graphql-request');
+const client = new GraphQLClient(process.env.ENDPOINT, { headers: {
+	'Authorization': `Bearer ${process.env.ACCESS_TOKEN}`
+}});
 
-const headers = {
-  // if needed, inject a PAT
-  // 'Authorization': 'Bearer __PERMANENT_AUTH_TOKEN__'
+const query = T => `
+	query Get${T}s {
+		all${T}s {
+			id
+		}
+	}
+`;
+
+const getAll = async (T) => {
+	const res = await client.request(query(T))
+	return toIds(res[`all${T}s`]);
 }
 
-const client = new Lokka({
-  transport: new Transport('https://api.graph.cool/simple/v1/__PROJECT_ID__', {headers})
-})
-
-const createPosts = async () => {
-  const mutations = _.chain(_.range(1000))
-    .map(n => (
-      `{
-        post: createPost(text: "${n}") {
-          id
-        }
-      }`
-    ))
-    .value()
-
-  await Bluebird.map(mutations, m => client.mutate(m), {concurrency: 4})
+const del = async (T, accounts) => {
+	await Promise.all(accounts.map(id => {
+		const query = `
+			mutation Delete${T}($id: ID!) {
+				delete${T}(id: $id) {
+					id
+				}
+			}
+		`;
+		const variables = { id };
+		return client.request(query, variables);
+	}));
 }
 
-const queryBatch = () => {
-  return client.query(`
-    query getPosts {
-      posts: allPosts(first: 100) {
-        id
-      }
-    }
-  `)
+const toIds = array => array.map(e => e.id);
+const detroyAllDataIn = async T => {
+	const allAccounts = await getAll(T);
+	await del(T, allAccounts);
+	console.log(`Deleted: ${allAccounts.length} ${T}s`);
 }
-
-const deleteBatch = async () => {
-  console.log('Fetching new nodes')
-  const posts = (await queryBatch()).posts
-
-  if (posts && posts.length > 0) {
-    console.log(`Deleting next batch of ${posts.length} posts...`)
-    const mutations = _.chain(posts)
-      .map(post => (
-        `{
-          deletePost(id: "${post.id}") {
-            id
-          }
-        }`
-      ))
-      .value()
-
-    await Bluebird.map(mutations, m => client.mutate(m), {concurrency: 4})
-    await deleteBatch()
-  }
+async function main() {
+	await Promise.all([
+		detroyAllDataIn('Account'),
+		detroyAllDataIn('User'),
+    // Add more
+	]);
 }
-
-const main = async() => {
-  // set to true to create test data
-  if (false) {
-    console.log('Creating some posts...')
-    await createPosts()
-  } else {
-    // query total posts:
-    const postsMeta = await client.query(`{
-      meta: _allPostsMeta {
-        count
-      }
-    }`)
-
-    console.log(`Deleting ${postsMeta.meta.count} posts...`)
-    await deleteBatch()
-  }
-
-  console.log('Done!')
-}
-
-main().catch((e) => console.error(e))
+main();
