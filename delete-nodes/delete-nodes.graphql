@@ -2,3 +2,8 @@ type Post {
   id: ID! @isUnique
   text: String!  
 }
+
+type User {
+  id: ID! @isUnique
+  name: String!
+}
