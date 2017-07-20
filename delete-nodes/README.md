@@ -18,41 +18,17 @@ Replace the `__PROJECT_ID__` and if needed the `__PERMANENT_AUTH_TOKEN__`.
 yarn
 ```
 
-Make sure your node version is at least 7:
+Make sure your node version is at least 7.6.0:
 
 ```sh
 node -v
 ```
 
-### 3. Create test data
+### 3. Bulk Delete
 
-Set the flag to `true`:
-
-```js
-const main = async() => {
-  // set to true to create test data
-  if (false) {
-    console.log('Creating some posts...')
-    await createPosts()
-  } else {
-    // ...
-  }
-
-  console.log('Done!')
-}
-```
-
-Run the script to create some test data:
+Run the script to delete your `Post` and `User` nodes.
 
 ```sh
-node --harmony-async-await delete-nodes.js
+node delete-nodes.js
 ```
 
-### 4. Bulk delete data
-
-Set the flag from above to `false` again.
-Run the script to bulk delete data:
-
-```sh
-node --harmony-async-await delete-nodes.js
-```
