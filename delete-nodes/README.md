@@ -1,5 +1,7 @@
 # delete-nodes
 
+A script that deletes 1000 nodes of a type at a time.
+
 ### 1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
 ```sh
