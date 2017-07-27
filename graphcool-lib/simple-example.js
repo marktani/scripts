@@ -16,12 +16,12 @@ const event = {
 const api = fromEvent(event).api('simple/v1')
 
 const query = `
-query {
-  allMovies {
-    id
-    title
+  query {
+    allMovies {
+      id
+      title
+    }
   }
-}
 `
 
 api.request(query)
