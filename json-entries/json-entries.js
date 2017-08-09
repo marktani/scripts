@@ -12,9 +12,9 @@ const query = `mutation jsons($json: Json!, $jsonList: [Json!]!) {
 }`
 
 const variables = {
-  json: JSON.stringify({a: 'a'}),
-  jsonList: [JSON.stringify({a: 'a'})]
+  json: {a: 'a'},
+  jsonList: [{a: 'a'}]
 }
 
 request('https://api.graph.cool/simple/v1/__PROJECT_ID__', query, variables)
-  .then(({ createJsons }) => console.log(createJsons))
+  .then(({ createEntry }) => console.log(createEntry))
