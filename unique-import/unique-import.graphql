@@ -1,0 +1,4 @@
+type Item {
+  id: ID!
+  key: String! @isUnique
+}
