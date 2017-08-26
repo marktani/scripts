@@ -1,5 +1,7 @@
 # unique-import
 
+Context and further explanations: https://www.graph.cool/forum/t/bulk-add-batch-add-insert/477/
+
 ### 1. Create GraphQL API with [`graphcool`](https://www.npmjs.com/package/graphcool)
 
 ```sh
