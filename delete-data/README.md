@@ -25,6 +25,6 @@ node -v
 Run the script to delete all nodes for types defined in the schema file
 
 ```sh
-node delete-nodes.js
+./node_modules/.bin/babel-node --presets es2015 delete-data/delete-data.js <graphql-server-url> delete-data/delete-data.graphql
 ```
 
