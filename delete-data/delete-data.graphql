@@ -1,0 +1,31 @@
+# The following types define the data model of the example service
+# based on which the GraphQL API is generated
+
+type User @model {
+  id: ID! @isUnique
+  name: String!
+  dateOfBirth: DateTime
+  tags : [String!]
+  posts: [Post!]! @relation(name: "UserPosts")
+  createdAt: DateTime! # read-only (managed by Graphcool)
+  updatedAt: DateTime! # read-only (managed by Graphcool)
+
+  email: String
+  auth0UserId: String @isUnique
+}
+
+type Post @model {
+  id: ID! @isUnique
+  title: String!
+
+  # Every relation also required a back-relation (to determine 1:1, 1:n or n:m)
+  author: User! @relation(name: "UserPosts")
+}
+
+
+# Model required by graphcool-mutex library. DO NOT CHANGE
+
+type Mutex @model {
+  id: ID! @isUnique
+  name: String! @isUnique
+}
